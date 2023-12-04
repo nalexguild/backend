@@ -1,0 +1,51 @@
+﻿@page
+@model FinalProyect.Pages.ListadoParticipantesModel
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+
+
+<div class="text-center">
+
+    <div class="grid grid-cols-2 gap-8">
+
+        <img src="~/images/logo.png" alt="Logo de la Institución" class="logo1 mb-8 justify-self-start" style="width: 25%; max-width: 100%; height: auto; margin-left:-100px" />
+
+        <img src="~/images/logo2.png" alt="Segundo Logo" class="logo2 mb-8 justify-self-end" style="width: 15%; max-width: 100%; height: auto; margin-right:-100px; margin-top:20px" />
+
+    </div>
+
+</div>
+
+<div class="bg-gray-200 p-8">
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-bold">Listado de Participantes</h1>
+        <div class="space-x-4">
+            <a asp-page="Registro" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Registro</a>
+            <a asp-page="Conferencias" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">Conferencias</a>
+        </div>
+    </div>
+
+
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        @foreach (var participante in Model.Participantes)
+        {
+            <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                <a asp-page="EditarParticipante" asp-route-id="@participante.Id">
+                    <img src="https://robohash.org/@participante.Id/" class="w-full h-40 object-cover" alt="Avatar">
+                </a>
+
+                <div class="p-4">
+                    <h5 class="text-xl font-bold mb-2">@participante.NombreCompleto</h5>
+                    <p class="text-gray-700">@participante.Ocupacion</p>
+                    @if (!string.IsNullOrEmpty(participante.UsuarioTwitter))
+                    {
+                        <a href="https://twitter.com/@participante.UsuarioTwitter" class="block text-blue-500 mt-2" target="_blank">@($"@{participante.UsuarioTwitter}") <i class="fab fa-twitter"></i></a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

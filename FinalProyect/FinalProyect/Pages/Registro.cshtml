@@ -1,0 +1,112 @@
+﻿@page
+@model FinalProyect.Pages.RegistroModel
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de Participante</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy7Q1BwDMlSiS/6P0iAd9bKkoGw5I985kN"
+          crossorigin="anonymous">
+</head>
+
+<div class="text-center">
+
+    <div class="grid grid-cols-2 gap-8">
+
+        <img src="~/images/logo.png" alt="Logo de la Institución" class="logo1 mb-8 justify-self-start" style="width: 15%; max-width: 25%; height: auto; margin-left:-1000px" />
+
+        <img src="~/images/logo2.png" alt="Segundo Logo" class="logo2 mb-8 justify-self-end" style="width: 15%; max-width: 10%; height: auto; margin-right:-1000px; margin-top:20px" />
+
+    </div>
+
+</div>
+
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h1>Registro de Participante</h1>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="NuevoParticipante_Nombre">Nombre:</label>
+                                <input type="text" class="form-control" id="NuevoParticipante_Nombre"
+                                       asp-for="NuevoParticipante.Nombre">
+                                <span asp-validation-for="NuevoParticipante.Nombre" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="NuevoParticipante_Apellidos">Apellidos:</label>
+                                <input type="text" class="form-control" id="NuevoParticipante_Apellidos"
+                                       asp-for="NuevoParticipante.Apellidos">
+                                <span asp-validation-for="NuevoParticipante.Apellidos" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="NuevoParticipante_Email">Email:</label>
+                                <input type="email" class="form-control" id="NuevoParticipante_Email"
+                                       asp-for="NuevoParticipante.Email">
+                                <span asp-validation-for="NuevoParticipante.Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="NuevoParticipante_UsuarioTwitter">Twitter ID:</label>
+                                <input type="text" class="form-control" id="NuevoParticipante_UsuarioTwitter"
+                                       asp-for="NuevoParticipante.UsuarioTwitter">
+                                <span asp-validation-for="NuevoParticipante.UsuarioTwitter"
+                                      class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="NuevoParticipante_Ocupacion">Ocupación:</label>
+                                <input type="text" class="form-control" id="NuevoParticipante_Ocupacion"
+                                       asp-for="NuevoParticipante.Ocupacion">
+                                <span asp-validation-for="NuevoParticipante.Ocupacion" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="AceptaTerminos"
+                                       asp-for="NuevoParticipante.AceptaTerminos">
+                                <label class="form-check-label" for="AceptaTerminos">
+                                    Acepto los términos y
+                                    condiciones
+                                </label>
+                                <span asp-validation-for="NuevoParticipante.AceptaTerminos"
+                                      class="text-danger"></span>
+                            </div>
+
+                            @if (Model.NuevoParticipante != null && !Model.NuevoParticipante.AceptaTerminos)
+                            {
+                                <div class="text-danger mt-2">
+                                    Debes aceptar los términos y condiciones.
+                                </div>
+                            }
+
+                            <div class="text-center mt-3">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy7Q1BwDMlSiS/6P0iAd9bKkoGw5I985kN"
+            crossorigin="anonymous"></script>
+
+</body>
+
+</html>
